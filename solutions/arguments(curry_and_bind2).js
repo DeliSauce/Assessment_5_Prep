@@ -1,3 +1,39 @@
+function sum1() {
+  let total = 0;
+  for (let i = 0; i < arguments.length; i++) {
+    total += arguments[i];
+  }
+
+  return total;
+}
+
+function sum2(...nums) {
+  let total = 0;
+  for (let i = 0; i < nums.length; i++) {
+    total += nums[i];
+  }
+
+  return total;
+}
+
+
+Function.prototype.myBind1 = function (ctx) {
+  const fn = this;
+  const bindArgs = Array.from(arguments).slice(1);
+  return function () {
+    const callArgs = Array.from(arguments);
+    return fn.apply(ctx, bindArgs.concat(callArgs));
+  };
+};
+
+Function.prototype.myBind2 = function (ctx, ...bindArgs) {
+  return (...callArgs) => {
+    return this.apply(ctx, bindArgs.concat(callArgs));
+  };
+};
+
+
+//Curry
 function curriedSum(numArgs) {
   const numbers = [];
 
@@ -50,3 +86,6 @@ Function.prototype.curry1 = function(numArgs){
   }
   return _curried;
 };
+
+console.log(mySum(1, 2, 3, 4) === 10);
+console.log(mySum(1, 2, 3, 4, 5) === 15);

@@ -24,4 +24,3 @@ const curie = new Cat("Curie");
 setTimeout(curie.meow.myBind(curie), 1000); //'Curie says meow!'
 
 setTimeout(curie.meow, 1000); //'undefined says meow!'
-setTimeout(meow.myBind(curie), 1000);
