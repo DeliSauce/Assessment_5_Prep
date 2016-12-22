@@ -17,14 +17,14 @@ function sum2(...nums) {
 }
 
 
-Function.prototype.myBind1 = function (ctx) {
-  const fn = this;
-  const bindArgs = Array.from(arguments).slice(1);
-  return function () {
-    const callArgs = Array.from(arguments);
-    return fn.apply(ctx, bindArgs.concat(callArgs));
-  };
-};
+// Function.prototype.myBind1 = function (ctx) {
+//   const fn = this;
+//   const bindArgs = Array.from(arguments).slice(1);
+//   return function () {
+//     const callArgs = Array.from(arguments);
+//     return fn.apply(ctx, bindArgs.concat(callArgs));
+//   };
+// };
 
 Function.prototype.myBind2 = function (ctx, ...bindArgs) {
   return (...callArgs) => {
@@ -55,22 +55,22 @@ function curriedSum(numArgs) {
 }
 
 // using spread
-Function.prototype.curry = function (numArgs) {
-  const args = [];
-  const fn = this;
-
-  function _curriedFn(arg) {
-    args.push(arg);
-
-    if (args.length === numArgs) {
-      return fn(...args);
-    } else {
-      return _curriedFn;
-    }
-  }
-
-  return _curriedFn;
-};
+// Function.prototype.curry = function (numArgs) {
+//   const args = [];
+//   const fn = this;
+//
+//   function _curriedFn(arg) {
+//     args.push(arg);
+//
+//     if (args.length === numArgs) {
+//       return fn(...args);
+//     } else {
+//       return _curriedFn;
+//     }
+//   }
+//
+//   return _curriedFn;
+// };
 
 // using apply
 Function.prototype.curry1 = function(numArgs){
@@ -87,5 +87,5 @@ Function.prototype.curry1 = function(numArgs){
   return _curried;
 };
 
-console.log(mySum(1, 2, 3, 4) === 10);
-console.log(mySum(1, 2, 3, 4, 5) === 15);
+// console.log(mySum(1, 2, 3, 4) === 10);
+// console.log(mySum(1, 2, 3, 4, 5) === 15);

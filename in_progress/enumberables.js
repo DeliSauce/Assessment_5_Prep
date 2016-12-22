@@ -70,3 +70,26 @@ Array.prototype.myInject = function(cb) {
 console.log(
   [1,2,3,4].myInject((a,b) => {return a + b;})
 );
+
+function mySelect(cb) {
+
+}
+
+
+Array.prototype.mySelect = function (cb) {
+  let arr = [];
+  this.forEach((el) => {if(cb(el)) arr.push(el);});
+  return arr;
+};
+
+console.log(
+  [1,2,3,4,5,6,7,8].mySelect((el) => isEven(el) ? true : false)
+);
+
+function isEven(num) {
+  if (num % 2 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
